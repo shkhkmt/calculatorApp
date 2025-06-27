@@ -27,12 +27,19 @@ body {
 } 
 
 .calculator { 
-  background-color: #504949; 
+  background-color: #444444; 
   border-radius: 70px; 
 } 
 
-#screen { 
-  background-color: #000000; 
+.screen { background-color: #000000; 
   border-radius: 70px; 
 } 
 
+.btn { 
+  background: #757575;
+  background: linear-gradient(0deg, rgba(117, 117, 117, 1) 0%, rgba(253, 253, 253, 1) 100%);
+}
+
+.buttons {
+  border-radius: 1em;  
+}

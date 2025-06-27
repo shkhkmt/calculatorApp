@@ -48,7 +48,7 @@ console.log(operate("/", 2, 3));
 
 const linkElement = document.createElement('link'); 
 linkElement.rel = 'stylesheet'; 
-linkElement.href = 'styles.css'; 
+linkElement.href = './styles.css'; 
 document.head.appendChild(linkElement); 
 
 let body = document.querySelector('body'); 
@@ -60,12 +60,11 @@ content.style.width = '-webkit-fill-available-';
 let calculator = document.querySelector('.calculator'); 
 calculator.style.width = '600px'; 
 calculator.style.height = '900px'; 
-calculator.style.border = '2px solid black'; 
 calculator.style.display = 'flex'; 
 calculator.style.flexDirection = 'column'; 
 calculator.style.justifyContent = 'center'; 
 
-let screen = document.querySelector('#screen'); 
+let screen = document.querySelector('.screen'); 
 screen.style.width = '520px'; 
 screen.style.height = '150px'; 
 screen.style.display = 'flex'; 
@@ -73,10 +72,27 @@ screen.style.alignSelf = 'stretch';
 screen.style.margin = '2em auto'; 
 screen.style.border = '2px solid black'; 
 
-let buttons = document.querySelector('#buttons'); 
+let buttons = document.querySelector('.buttons'); 
 buttons.style.width = '520px'; 
 buttons.style.height = '590px'; 
-buttons.style.display = 'flex'; 
+buttons.style.display = 'grid'; 
 buttons.style.alignSelf = 'stretch'; 
-buttons.style.margin = '2em auto'; 
-buttons.style.border = '2px solid black'; 
+buttons.style.margin = '0.5em auto'; 
+buttons.style.flex = '1 1 auto'; 
+buttons.style.gridTemplateColumns = 'auto auto auto auto'; 
+buttons.style.margin = '2.5em'; 
+
+for (let i=1; i <= 20; i++) {
+  let btnDiv = document.createElement('div'); 
+  btnDiv.id = `btnDiv${i}`;
+  btnDiv.className = "btn"; 
+  btnDiv.style.display = 'flex'; 
+  btnDiv.style.borderRadius = '10em'; 
+  btnDiv.style.margin = '.5em'; 
+  
+
+
+  buttons.appendChild(btnDiv);
+}
+
+
