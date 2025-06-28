@@ -90,6 +90,20 @@ for (let i=1; i <= 20; i++) {
   btnDiv.style.borderRadius = '10em'; 
   btnDiv.style.margin = '.5em'; 
   
+  switch (btnDiv.id) {
+    case 'btnDiv1': 
+      btnDiv.style.background = '#8F7A7A';
+      btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
+    break; 
+    case 'btnDiv2': 
+      btnDiv.style.background = '#8F7A7A';
+      btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
+      break; 
+    case 'btnDiv3': 
+      btnDiv.style.background = '#8F7A7A';
+      btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
+    break;
+  }
 
 
   buttons.appendChild(btnDiv);
