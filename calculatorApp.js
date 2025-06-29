@@ -63,6 +63,7 @@ calculator.style.height = '900px';
 calculator.style.display = 'flex'; 
 calculator.style.flexDirection = 'column'; 
 calculator.style.justifyContent = 'center'; 
+calculator.style.margin = '2.5em'; 
 
 let screen = document.querySelector('.screen'); 
 screen.style.width = '520px'; 
@@ -77,10 +78,9 @@ buttons.style.width = '520px';
 buttons.style.height = '590px'; 
 buttons.style.display = 'grid'; 
 buttons.style.alignSelf = 'stretch'; 
-buttons.style.margin = '0.5em auto'; 
 buttons.style.flex = '1 1 auto'; 
 buttons.style.gridTemplateColumns = 'auto auto auto auto'; 
-buttons.style.margin = '2.5em'; 
+buttons.style.margin = '0 2.5em 2.5em 2.5em'; 
 
 for (let i=1; i <= 20; i++) {
   let btnDiv = document.createElement('div'); 
@@ -103,6 +103,27 @@ for (let i=1; i <= 20; i++) {
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
     break;
+    case 'btnDiv4': 
+       btnDiv.style.background = '#20D7FF';
+       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
+    break; 
+    case 'btnDiv8': 
+       btnDiv.style.background = '#20D7FF';
+       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
+    break; 
+    case 'btnDiv12': 
+       btnDiv.style.background = '#20D7FF';
+       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
+    break; 
+    case 'btnDiv16': 
+       btnDiv.style.background = '#20D7FF';
+       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
+    break; 
+    case 'btnDiv20': 
+       btnDiv.style.background = '#20D7FF';
+       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
+    break; 
+
   }
 
 

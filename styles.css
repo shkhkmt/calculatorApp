@@ -10,7 +10,7 @@ header {
 
 body {
   display: flex; 
-  background-color: hsl(0, 0%, 60%); 
+  background-color: hsl(0, 0%, 80%); 
   font-family: silkscreen; 
   color: hsl(0, 100%, 100%);
   margin: 0; 
@@ -27,12 +27,13 @@ body {
 } 
 
 .calculator { 
-  background-color: #444444; 
+  background-color: #545454; 
   border-radius: 70px; 
 } 
 
 .screen { background-color: #000000; 
   border-radius: 70px; 
+  margin-bottom: 0px; 
 } 
 
 .btn { 
@@ -42,4 +43,5 @@ body {
 
 .buttons {
   border-radius: 1em;  
+  margin-top: 0px; 
 }
