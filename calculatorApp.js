@@ -18,6 +18,10 @@ function divide(a, b) {
   return a / b; 
 }
 
+function sqrt(a) { 
+  return math.sqrt(a)
+} 
+
 // operator function 
 
 function operate(operator, a, b) { 
@@ -33,7 +37,9 @@ function operate(operator, a, b) {
       break; 
     case "/": 
       return divide(a, b) 
-      break; 
+      break;
+    case "√": 
+      return sqrt(a); 
   }
 }
 
@@ -56,6 +62,7 @@ let body = document.querySelector('body');
 let content = document.querySelector('#content'); 
 content.style.alignItems = 'anchor-center'; 
 content.style.width = '-webkit-fill-available-'; 
+content.style.flexDirection = 'column'; 
 
 let calculator = document.querySelector('.calculator'); 
 calculator.style.width = '600px'; 
@@ -64,6 +71,7 @@ calculator.style.display = 'flex';
 calculator.style.flexDirection = 'column'; 
 calculator.style.justifyContent = 'center'; 
 calculator.style.margin = '2.5em'; 
+
 
 let screen = document.querySelector('.screen'); 
 screen.style.width = '520px'; 
@@ -82,6 +90,11 @@ buttons.style.flex = '1 1 auto';
 buttons.style.gridTemplateColumns = 'auto auto auto auto'; 
 buttons.style.margin = '0 2.5em 2.5em 2.5em'; 
 
+let footer = document.createElement('footer'); 
+footer.id = 'footer'; 
+footer.textContent = 'Copyright © 2025 shkhkmt'; 
+content.appendChild(footer); 
+
 for (let i=1; i <= 20; i++) {
   let btnDiv = document.createElement('div'); 
   btnDiv.id = `btnDiv${i}`;
@@ -89,23 +102,50 @@ for (let i=1; i <= 20; i++) {
   btnDiv.style.display = 'flex'; 
   btnDiv.style.borderRadius = '10em'; 
   btnDiv.style.margin = '.5em'; 
+  btnDiv.style.justifyContent = 'center'; 
+  btnDiv.style.fontSize = '2em'; 
   
   switch (btnDiv.id) {
     case 'btnDiv1': 
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
+      let aC = document.createElement('p');
+      aC.textContent = 'AC'; 
+      aC.style.display = 'flex'; 
+      aC.style.justifyContent = 'center'; 
+      aC.style.alignSelf = 'center'; 
+      aC.style.margin = '0'; 
+      btnDiv.appendChild(aC); 
     break; 
     case 'btnDiv2': 
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
+      let sqrt = document.createElement('p'); 
+      sqrt.textContent = '√'; 
+      sqrt.style.display = 'flex';
+      sqrt.style.justifyContent = 'center';; 
+      sqrt.style.alignSelf = 'center'
+      btnDiv.appendChild(sqrt); 
       break; 
     case 'btnDiv3': 
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
+      let pcnt = document.createElement('p'); 
+      pcnt.textContent = '%'; 
+      pcnt.style.display = 'flex'; 
+      pcnt.style.justifyContent = 'center'; 
+      pcnt.style.alignSelf = 'center'; 
+      btnDiv.appendChild(pcnt); 
     break;
     case 'btnDiv4': 
-       btnDiv.style.background = '#20D7FF';
-       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
+      btnDiv.style.background = '#20D7FF';
+      btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
+      let divide = document.createElement('p'); 
+      divide.textContent = '÷'; 
+      divide.style.display = 'flex'; 
+      divide.style.justifyContent = 'center'; 
+      divide.style.alignSelf = 'center'; 
+      btnDiv.appendChild(divide); 
     break; 
     case 'btnDiv8': 
        btnDiv.style.background = '#20D7FF';

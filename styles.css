@@ -1,4 +1,4 @@
-header {
+head {
   font-size: -webkit-xxx-large;
   display: flex;  
   justify-content: center;
@@ -6,6 +6,7 @@ header {
   padding-bottom: 0.5em; 
   font-weight: 900;
   align-self: center; 
+  font-size: 36px; 
 }
 
 body {
@@ -19,6 +20,11 @@ body {
   flex-direction: column; 
   justify-content: center; 
 }
+
+p { 
+  margin: 0; 
+  padding: 0; 
+} 
 
 #content { 
   display: flex; 
@@ -39,6 +45,7 @@ body {
 .btn { 
   background: #757575;
   background: linear-gradient(0deg, rgba(117, 117, 117, 1) 0%, rgba(253, 253, 253, 1) 100%);
+  font-size: 2em;; 
 }
 
 .buttons {
