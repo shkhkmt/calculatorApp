@@ -12,7 +12,6 @@ head {
 body {
   display: flex; 
   background-color: hsl(0, 0%, 80%); 
-  font-family: silkscreen; 
   color: hsl(0, 100%, 100%);
   margin: 0; 
   height: auto;  
@@ -45,7 +44,9 @@ p {
 .btn { 
   background: #757575;
   background: linear-gradient(0deg, rgba(117, 117, 117, 1) 0%, rgba(253, 253, 253, 1) 100%);
-  font-size: 2em;; 
+  font-size: 2em;
+  width: 3em; 
+  height: 3em;  
 }
 
 .buttons {
