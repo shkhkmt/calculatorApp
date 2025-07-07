@@ -12,6 +12,7 @@ head {
 body {
   display: flex; 
   background-color: hsl(0, 0%, 80%); 
+  font-family: "Comic Sans MS", sans-serif; 
   color: hsl(0, 100%, 100%);
   margin: 0; 
   height: auto;  

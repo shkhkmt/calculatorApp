@@ -289,4 +289,9 @@ for (let i=1; i <= 20; i++) {
 
 }
 
+function handleClick(event) { 
+ const calcBtn = event.target; 
+ return  console.log(calcBtn.id); 
+}
 
+calculator.addEventListener('click', handleClick); 
