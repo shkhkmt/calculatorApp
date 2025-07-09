@@ -78,8 +78,21 @@ screen.style.width = '520px';
 screen.style.height = '150px'; 
 screen.style.display = 'flex'; 
 screen.style.alignSelf = 'stretch'; 
+screen.style.alignItems = 'center'; 
+screen.style.justifyContent = 'flex-end'; 
 screen.style.margin = '2em auto'; 
 screen.style.border = '2px solid black'; 
+
+let inputs = document.createElement('p'); 
+inputs.textContent = '0.00'; 
+inputs.style.fontSize = '3em'; 
+inputs.style.display = 'flex'; 
+inputs.style.margin = '.5em';  
+
+let inputValues = inputs.textContent
+let values = Array.from(inputValues, (inputValues) => inputValues); 
+
+screen.appendChild(inputs)
 
 let buttons = document.querySelector('.buttons'); 
 buttons.style.width = '520px'; 
@@ -253,7 +266,7 @@ for (let i=1; i <= 20; i++) {
     break; 
     case 'btnDiv15': 
       let three = document.createElement('p'); 
-      three.textContent = '0'; 
+      three.textContent = '3'; 
       three.style.display = 'flex'; 
       three.style.justifyContent = 'center'; 
       three.style.alignSelf = 'center'; 
@@ -289,9 +302,55 @@ for (let i=1; i <= 20; i++) {
 
 }
 
-function handleClick(event) { 
- const calcBtn = event.target; 
- return  console.log(calcBtn.id); 
+
+function handleClick (event) { 
+  let target = event.target; 
+
+  switch (target.id) {
+    case 'btnDiv1': 
+      values.length = 0; 
+      inputs.textContent = values; 
+      break; 
+    case 'btnDiv2': 
+      values.push('√');
+      inputs.textContent = values; 
+      break; 
+    case 'btnDiv3': 
+      values.push('%'); 
+      inputs.textContent = values; 
+      break; 
+    case 'btnDiv4': 
+      values.push('÷');a
+      inputs.textContent = values; 
+      break; 
+    case 'btnDiv5': 
+      values.push(7); 
+      inputs.textContent = values; 
+      break; 
+    case 'btnDiv6':
+      values.push(8)
+      inputs.textContent = values; 
+      break; 
+    case 'btnDiv7': 
+      values.push(9) 
+      inputs.textContent = values; 
+      break; 
+  }
+  return console.log(target.id); 
 }
 
 calculator.addEventListener('click', handleClick); 
+
+/*
+function handleClick(event) { 
+  const calcBtn = event.target;
+  switch (calcBtn.id) {
+    case 'btnDiv1': 
+      let clear = document.createElement('p'); 
+      clear.textContent = '0'; 
+      screen.appendChild(clear);
+      return; 
+}
+
+calculator.addEventListener('click', handleClick); 
+*/
