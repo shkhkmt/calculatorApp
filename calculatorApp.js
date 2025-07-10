@@ -84,13 +84,13 @@ screen.style.margin = '2em auto';
 screen.style.border = '2px solid black'; 
 
 let inputs = document.createElement('p'); 
-inputs.textContent = '0.00'; 
+inputs.textContent = '0'; 
 inputs.style.fontSize = '3em'; 
 inputs.style.display = 'flex'; 
 inputs.style.margin = '.5em';  
 
 let inputValues = inputs.textContent
-let values = Array.from(inputValues, (inputValues) => inputValues); 
+let values = Array.from(inputValues);
 
 screen.appendChild(inputs)
 
@@ -309,32 +309,62 @@ function handleClick (event) {
   switch (target.id) {
     case 'btnDiv1': 
       values.length = 0; 
-      inputs.textContent = values; 
+      inputs.textContent = values.join('');  
       break; 
     case 'btnDiv2': 
       values.push('√');
-      inputs.textContent = values; 
+      inputs.textContent.join = values.join('');  
       break; 
     case 'btnDiv3': 
       values.push('%'); 
-      inputs.textContent = values; 
+      inputs.textContent = values.join('');  
       break; 
     case 'btnDiv4': 
-      values.push('÷');a
-      inputs.textContent = values; 
+      values.push('÷');
+      inputs.textContent = values.join('');  
       break; 
     case 'btnDiv5': 
       values.push(7); 
-      inputs.textContent = values; 
+      inputs.textContent = values.join('');  
       break; 
     case 'btnDiv6':
       values.push(8)
-      inputs.textContent = values; 
+      inputs.textContent = values.join('');  
       break; 
     case 'btnDiv7': 
       values.push(9) 
-      inputs.textContent = values; 
+      inputs.textContent = values.join('');  
       break; 
+    case 'btnDiv8': 
+      values.push(*)
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv9': 
+      values.push(4); 
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv10': 
+      values.push(5); 
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv11': 
+      values.push(6); 
+      break; 
+    case 'btnDiv12'; 
+      values.push('-'); 
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv13': 
+      values.push(1); 
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv14': 
+      values.push(2); 
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv15': 
+      values.push(3); 
+
   }
   return console.log(target.id); 
 }
