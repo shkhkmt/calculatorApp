@@ -84,7 +84,7 @@ screen.style.margin = '2em auto';
 screen.style.border = '2px solid black'; 
 
 let inputs = document.createElement('p'); 
-inputs.textContent = '0'; 
+inputs.textContent = ''; 
 inputs.style.fontSize = '3em'; 
 inputs.style.display = 'flex'; 
 inputs.style.margin = '.5em';  
@@ -336,7 +336,7 @@ function handleClick (event) {
       inputs.textContent = values.join('');  
       break; 
     case 'btnDiv8': 
-      values.push(*)
+      values.push('*')
       inputs.textContent = values.join(''); 
       break; 
     case 'btnDiv9': 
@@ -350,7 +350,7 @@ function handleClick (event) {
     case 'btnDiv11': 
       values.push(6); 
       break; 
-    case 'btnDiv12'; 
+    case 'btnDiv12': 
       values.push('-'); 
       inputs.textContent = values.join(''); 
       break; 
@@ -364,6 +364,26 @@ function handleClick (event) {
       break; 
     case 'btnDiv15': 
       values.push(3); 
+    case 'btnDiv16': 
+      values.push('+'); 
+      inputs.textContent = values.join('');
+      break; 
+    case 'btnDiv17': 
+      values.pop(); 
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv18': 
+      values.push(0);
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv19': 
+      values.push('.'); 
+      inputs.textContent = values.join(''); 
+      break; 
+    case 'btnDiv20': 
+      values.push('='); 
+      inputs.textContent = values.join(''); 
+      break; 
 
   }
   return console.log(target.id); 
