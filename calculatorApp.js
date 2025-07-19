@@ -25,6 +25,7 @@ function sqrt(a) {
 // operator function 
 
 function operate(operator, a, b) { 
+
   switch (operator) { 
     case "+": 
       return sum(a, b);
@@ -35,13 +36,16 @@ function operate(operator, a, b) {
     case "*": 
       return multiply(a, b); 
       break; 
-    case "/": 
+    case "÷": 
       return divide(a, b) 
       break;
     case "√": 
       return sqrt(a); 
   }
 }
+
+
+let a, b, operator; 
 
 /*
 console.log(operate("-", 2, 3)); 
@@ -349,6 +353,7 @@ function handleClick (event) {
       break; 
     case 'btnDiv11': 
       values.push(6); 
+      inputs.textContent = values.join(''); 
       break; 
     case 'btnDiv12': 
       values.push('-'); 
@@ -364,8 +369,10 @@ function handleClick (event) {
       break; 
     case 'btnDiv15': 
       values.push(3); 
+      inputs.textContent = values.join(''); 
+      break; 
     case 'btnDiv16': 
-      values.push('+'); 
+      values.push('+');
       inputs.textContent = values.join('');
       break; 
     case 'btnDiv17': 
@@ -380,27 +387,48 @@ function handleClick (event) {
       values.push('.'); 
       inputs.textContent = values.join(''); 
       break; 
-    case 'btnDiv20': 
-      values.push('='); 
-      inputs.textContent = values.join(''); 
+    case 'btnDiv20':
+      getOperator(values); 
+      getA(values); 
+      getB(values); 
+      inputs.textContent = operate(operator, a, b); 
       break; 
 
   }
   return console.log(target.id); 
 }
 
-calculator.addEventListener('click', handleClick); 
 
-/*
-function handleClick(event) { 
-  const calcBtn = event.target;
-  switch (calcBtn.id) {
-    case 'btnDiv1': 
-      let clear = document.createElement('p'); 
-      clear.textContent = '0'; 
-      screen.appendChild(clear);
-      return; 
+function getOperator(values) { 
+  let operater; 
+  
+  values.forEach(item => { 
+    if (isNaN(item)) {
+      operator =  item; 
+    }
+  });
+
+  return operator; 
 }
 
+function getA(values) {  
+    let lhs;
+    for (let i = 0; i < values.length; i++) {
+    if (typeof values[i] !== 'number') break;
+      lhs = values.slice(0, values[i]).join("");
+    }
+    return a = parseInt(lhs);  
+  } 
+
+function getB(values) { 
+  let rhs; 
+  for (let i = values.length - 1; i >= 0; i--) {
+    if (values[i] !== 'number') break; 
+      rhs = values.slice(i, -1).join("");  
+    }
+    return b = parseInt(rhs); 
+}
+
+
+
 calculator.addEventListener('click', handleClick); 
-*/
