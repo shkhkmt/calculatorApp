@@ -400,7 +400,6 @@ function handleClick (event) {
 
 
 function getOperator(values) { 
-  let operater; 
   
   values.forEach(item => { 
     if (isNaN(item)) {
@@ -411,7 +410,7 @@ function getOperator(values) {
   return operator; 
 }
 
-function getA(values) {  
+function getA(values) { 
     let lhs;
     for (let i = 0; i < values.length; i++) {
     if (typeof values[i] !== 'number') break;
@@ -420,15 +419,31 @@ function getA(values) {
     return a = parseInt(lhs);  
   } 
 
-function getB(values) { 
-  let rhs; 
-  for (let i = values.length - 1; i >= 0; i--) {
-    if (values[i] !== 'number') break; 
-      rhs = values.slice(i, -1).join("");  
-    }
-    return b = parseInt(rhs); 
+
+Array.prototype.last = function () {
+  return this.length > 0 ? this.length - 1 : -1; 
 }
 
+
+function getB(values) { 
+  let opIndex = -1; 
+  for (let i = 0; i < values.length; i++) {
+    if (typeof values[i] !== 'number') {
+      opIndex = i;
+      break;
+    }
+  }
+  
+  if (opIndex === -1) return 0;
+  
+  const start = opIndex + 1; 
+  const end = values.last();
+  
+  if (start > end) return 0;
+  
+  const rhs = values.slice(start, end + 1).join("");
+  return b  = parseInt(rhs);
+} 
 
 
 calculator.addEventListener('click', handleClick); 
