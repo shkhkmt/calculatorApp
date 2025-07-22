@@ -284,14 +284,13 @@ for (let i=1; i <= 20; i++) {
       zero.style.alignSelf = 'center'; 
       btnDiv.appendChild(zero); 
     break; 
-    case 'btnDiv19': 
-      let decimal = document.createElement('p'); 
-      decimal.textContent = '.'; 
-      decimal.style.display = 'flex'; 
-      decimal.style.justifyContent = 'center'; 
-      decimal.style.alignSelf = 'center'; 
-      btnDiv.appendChild(decimal); 
-    break; 
+//    case 'btnDiv19': 
+//      let decimal = document.createElement('p'); ; 
+//      decimal.style.display = 'none'; 
+//      decimal.style.justifyContent = 'center'; 
+//      decimal.style.alignSelf = 'center'; 
+//      btnDiv.appendChild(decimal); 
+//    break; 
     case 'btnDiv17': 
       let backspace = document.createElement('p'); 
       backspace.textContent = '⬅︎'; 
@@ -383,10 +382,12 @@ function handleClick (event) {
       values.push(0);
       inputs.textContent = values.join(''); 
       break; 
+    /*
     case 'btnDiv19': 
       values.push('.'); 
       inputs.textContent = values.join(''); 
-      break; 
+      break;
+    */ 
     case 'btnDiv20':
       getOperator(values); 
       getA(values); 
@@ -398,9 +399,8 @@ function handleClick (event) {
   return console.log(target.id); 
 }
 
-
 function getOperator(values) { 
-  
+
   values.forEach(item => { 
     if (isNaN(item)) {
       operator =  item; 
@@ -426,9 +426,11 @@ Array.prototype.last = function () {
 
 
 function getB(values) { 
+  let op = getOperator(values);
+  console.log(op); 
   let opIndex = -1; 
   for (let i = 0; i < values.length; i++) {
-    if (typeof values[i] !== 'number') {
+    if (values[i] == op) {
       opIndex = i;
       break;
     }
