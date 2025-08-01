@@ -307,97 +307,129 @@ for (let i=1; i <= 20; i++) {
 
 
 function handleClick (event) { 
-  let target = event.target; 
 
-  switch (target.id) {
-    case 'btnDiv1': 
-      values.length = 0; 
-      inputs.textContent = values.join('');  
-      break; 
-    case 'btnDiv2': 
-      values.push('√');
-      inputs.textContent.join = values.join('');  
-      break; 
-    case 'btnDiv3': 
-      values.push('%'); 
-      inputs.textContent = values.join('');  
-      break; 
-    case 'btnDiv4': 
-      values.push('÷');
-      inputs.textContent = values.join('');  
-      break; 
-    case 'btnDiv5': 
-      values.push(7); 
-      inputs.textContent = values.join('');  
-      break; 
-    case 'btnDiv6':
-      values.push(8)
-      inputs.textContent = values.join('');  
-      break; 
-    case 'btnDiv7': 
-      values.push(9) 
-      inputs.textContent = values.join('');  
-      break; 
-    case 'btnDiv8': 
-      values.push('*')
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv9': 
-      values.push(4); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv10': 
-      values.push(5); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv11': 
-      values.push(6); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv12': 
-      values.push('-'); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv13': 
-      values.push(1); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv14': 
-      values.push(2); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv15': 
-      values.push(3); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv16': 
-      values.push('+');
-      inputs.textContent = values.join('');
-      break; 
-    case 'btnDiv17': 
-      values.pop(); 
-      inputs.textContent = values.join(''); 
-      break; 
-    case 'btnDiv18': 
-      values.push(0);
-      inputs.textContent = values.join(''); 
-      break; 
+  let target = event.target;
+    
+    switch (target.id) {
+      case 'btnDiv1': 
+        values.length = 0; 
+        inputs.textContent = values.join('');  
+        break; 
+      case 'btnDiv2': 
+        values.push('√');
+        inputs.textContent.join = values.join('');  
+        break; 
+      case 'btnDiv3': 
+        values.push('%'); 
+        inputs.textContent = values.join('');  
+        break; 
+      case 'btnDiv4': 
+          if (getOperator(values) === undefined) {
+          values.push('÷');
+          inputs.textContent = values.join('');  
+          } 
+          else {
+            getOperator(values); 
+            getA(values); 
+            getB(values); 
+            inputs.textContent = operate(operator, a, b).toFixed(2); 
+          }
+        break; 
+      case 'btnDiv5': 
+        values.push(7); 
+        inputs.textContent = values.join('');  
+        break; 
+      case 'btnDiv6':
+        values.push(8)
+        inputs.textContent = values.join('');  
+        break; 
+      case 'btnDiv7': 
+        values.push(9) 
+        inputs.textContent = values.join('');  
+        break; 
+      case 'btnDiv8': 
+        if (getOperator(values) === undefined) {
+          values.push('*')
+          inputs.textContent = values.join(''); 
+        }
+        else {
+          getOperator(values);
+          getA(values); 
+          getB(values); 
+          inputs.textContent = operate(operator, a, b).toFixed(2); 
+        }
+        break; 
+      case 'btnDiv9': 
+        values.push(4); 
+        inputs.textContent = values.join(''); 
+        break; 
+      case 'btnDiv10': 
+        values.push(5); 
+        inputs.textContent = values.join(''); 
+        break; 
+      case 'btnDiv11': 
+        values.push(6); 
+        inputs.textContent = values.join(''); 
+        break; 
+      case 'btnDiv12': 
+          if (getOperator(values) === undefined) {
+            values.push('-'); 
+            inputs.textContent = values.join(''); 
+          }
+          else {
+            getOperator(values); 
+            getA(values); 
+            getB(values); 
+            inputs.textContent = operate(operator, a, b); 
+          } 
+        break; 
+      case 'btnDiv13': 
+        values.push(1); 
+        inputs.textContent = values.join(''); 
+        break; 
+      case 'btnDiv14': 
+        values.push(2); 
+        inputs.textContent = values.join(''); 
+        break; 
+      case 'btnDiv15': 
+        values.push(3); 
+        inputs.textContent = values.join(''); 
+        break; 
+      case 'btnDiv16': 
+          if (getOperator(values) === undefined) {
+            values.push('+');
+            inputs.textContent = values.join('')
+          }
+          else {
+            getOperator(values); 
+            getA(values);
+            getB(values); 
+            inputs.textContent = operate(operator, a, b).toFixed(2); 
+          }
+         break; 
+      case 'btnDiv17': 
+        values.pop(); 
+        inputs.textContent = values.join(''); 
+        break; 
+      case 'btnDiv18': 
+        values.push(0);
+        inputs.textContent = values.join(''); 
+        break; 
     /*
     case 'btnDiv19': 
       values.push('.'); 
       inputs.textContent = values.join(''); 
       break;
     */ 
-    case 'btnDiv20':
-      getOperator(values); 
-      getA(values); 
-      getB(values); 
-      inputs.textContent = operate(operator, a, b); 
-      break; 
-
-  }
-  return console.log(target.id); 
+      case 'btnDiv20':
+        getOperator(values); 
+        getA(values); 
+        getB(values); 
+        inputs.textContent = operate(operator, a, b).toFixed(2); 
+        break; 
+    }
 }
+
 
 function getOperator(values) { 
 
@@ -436,12 +468,12 @@ function getB(values) {
     }
   }
   
-  if (opIndex === -1) return 0;
+  if (opIndex === -1) return;
   
   const start = opIndex + 1; 
   const end = values.last();
   
-  if (start > end) return 0;
+  if (start > end) return;
   
   const rhs = values.slice(start, end + 1).join("");
   return b  = parseInt(rhs);
