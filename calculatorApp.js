@@ -24,7 +24,10 @@ function sqrt(a) {
 
 // operator function 
 
-function operate(operator, a, b) { 
+function operate(values) { 
+  let a = getA(values);  
+  let b = getB(values); 
+  let operator = getOperator(values);
 
   switch (operator) { 
     case "+": 
@@ -45,16 +48,6 @@ function operate(operator, a, b) {
 }
 
 
-let a, b, operator; 
-
-/*
-console.log(operate("-", 2, 3)); 
-console.log(operate("*", 2, 3));
-console.log(operate("+", 2, 3)); 
-console.log(operate("/", 2, 3)); 
-*/ 
-
-// UI 
 
 const linkElement = document.createElement('link'); 
 linkElement.rel = 'stylesheet'; 
@@ -329,10 +322,8 @@ function handleClick (event) {
           inputs.textContent = values.join('');  
           } 
           else {
-            getOperator(values); 
-            getA(values); 
-            getB(values); 
-            inputs.textContent = operate(operator, a, b).toFixed(2); 
+            inputs.textContent = operate(values).toFixed(2); 
+            values.length = 0; 
           }
         break; 
       case 'btnDiv5': 
@@ -353,10 +344,8 @@ function handleClick (event) {
           inputs.textContent = values.join(''); 
         }
         else {
-          getOperator(values);
-          getA(values); 
-          getB(values); 
-          inputs.textContent = operate(operator, a, b).toFixed(2); 
+          inputs.textContent = operate(values).toFixed(2); 
+          values.length = 0; 
         }
         break; 
       case 'btnDiv9': 
@@ -377,10 +366,8 @@ function handleClick (event) {
             inputs.textContent = values.join(''); 
           }
           else {
-            getOperator(values); 
-            getA(values); 
-            getB(values); 
-            inputs.textContent = operate(operator, a, b); 
+            inputs.textContent = operate(values); 
+            values.length = 0; 
           } 
         break; 
       case 'btnDiv13': 
@@ -396,15 +383,17 @@ function handleClick (event) {
         inputs.textContent = values.join(''); 
         break; 
       case 'btnDiv16': 
-          if (getOperator(values) === undefined) {
-            values.push('+');
+          if (values.length === 0) {
+            break; 
+          }
+
+          else if (getOperator(values) === undefined) {
+            values.push('+')
             inputs.textContent = values.join('')
           }
           else {
-            getOperator(values); 
-            getA(values);
-            getB(values); 
-            inputs.textContent = operate(operator, a, b).toFixed(2); 
+            inputs.textContent = operate(values).toFixed(2); 
+            values.length = 0; 
           }
          break; 
       case 'btnDiv17': 
@@ -422,25 +411,28 @@ function handleClick (event) {
       break;
     */ 
       case 'btnDiv20':
-        getOperator(values); 
-        getA(values); 
-        getB(values); 
-        inputs.textContent = operate(operator, a, b).toFixed(2); 
-        break; 
+        if (getB(values) === undefined || getA(values) === NaN) {
+          break; 
+        }
+        else {
+          inputs.textContent = operate(values).toFixed(2); 
+          values.length = 0; 
+          break;
+        }
     }
 }
 
-
 function getOperator(values) { 
-
+  let op; 
   values.forEach(item => { 
     if (isNaN(item)) {
-      operator =  item; 
+      op = item; 
     }
   });
 
-  return operator; 
+  return op; 
 }
+
 
 function getA(values) { 
     let lhs;
@@ -448,36 +440,24 @@ function getA(values) {
     if (typeof values[i] !== 'number') break;
       lhs = values.slice(0, values[i]).join("");
     }
-    return a = parseInt(lhs);  
+    let a = parseInt(lhs);
+    return a; 
   } 
-
 
 Array.prototype.last = function () {
   return this.length > 0 ? this.length - 1 : -1; 
 }
 
-
 function getB(values) { 
   let op = getOperator(values);
-  console.log(op); 
-  let opIndex = -1; 
-  for (let i = 0; i < values.length; i++) {
-    if (values[i] == op) {
-      opIndex = i;
-      break;
-    }
+  let index = values.last();
+  let rhs; 
+  for (let i = index; i > 0; i--) {
+    if (values[i] == op) break;
+    rhs = values.slice(i, index +1).join("");
   }
-  
-  if (opIndex === -1) return;
-  
-  const start = opIndex + 1; 
-  const end = values.last();
-  
-  if (start > end) return;
-  
-  const rhs = values.slice(start, end + 1).join("");
-  return b  = parseInt(rhs);
-} 
-
+  let b = parseInt(rhs); 
+  return b; 
+  }
 
 calculator.addEventListener('click', handleClick); 
