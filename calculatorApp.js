@@ -19,7 +19,11 @@ function divide(a, b) {
 }
 
 function sqrt(a) { 
-  return math.sqrt(a)
+  return Math.sqrt(a); 
+} 
+
+function pcnt(a, b) { 
+  return a * b/100;
 } 
 
 // operator function 
@@ -28,7 +32,9 @@ function operate(values) {
   let a = getA(values);  
   let b = getB(values); 
   let operator = getOperator(values);
-
+  console.log(a); 
+  console.log(b); 
+  console.log(operator); 
   switch (operator) { 
     case "+": 
       return sum(a, b);
@@ -40,14 +46,21 @@ function operate(values) {
       return multiply(a, b); 
       break; 
     case "÷": 
-      return divide(a, b) 
+      if (b === 0) { 
+        return "Don't be silly"; 
+      }
+      else {
+      return divide(a, b);  
+      }
       break;
     case "√": 
-      return sqrt(a); 
+      return sqrt(b); 
+    case "%": 
+      return pcnt(a, b); 
   }
 }
 
-
+let previousState; 
 
 const linkElement = document.createElement('link'); 
 linkElement.rel = 'stylesheet'; 
@@ -131,7 +144,7 @@ for (let i=1; i <= 20; i++) {
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
       let sqrt = document.createElement('p'); 
-      sqrt.textContent = '√'; 
+      sqrt.textContent = '√x'; 
       sqrt.style.display = 'flex';
       sqrt.style.justifyContent = 'center';; 
       sqrt.style.alignSelf = 'center'
@@ -277,13 +290,14 @@ for (let i=1; i <= 20; i++) {
       zero.style.alignSelf = 'center'; 
       btnDiv.appendChild(zero); 
     break; 
-//    case 'btnDiv19': 
-//      let decimal = document.createElement('p'); ; 
-//      decimal.style.display = 'none'; 
-//      decimal.style.justifyContent = 'center'; 
-//      decimal.style.alignSelf = 'center'; 
-//      btnDiv.appendChild(decimal); 
-//    break; 
+    case 'btnDiv19': 
+      let decimal = document.createElement('p'); 
+      decimal.textContent = '.'; 
+      decimal.style.display = 'flex'; 
+      decimal.style.justifyContent = 'center'; 
+      decimal.style.alignSelf = 'center'; 
+      btnDiv.appendChild(decimal); 
+    break; 
     case 'btnDiv17': 
       let backspace = document.createElement('p'); 
       backspace.textContent = '⬅︎'; 
@@ -301,23 +315,40 @@ for (let i=1; i <= 20; i++) {
 
 function handleClick (event) { 
 
-  let target = event.target;
-    
+  let target = event.target; 
     switch (target.id) {
       case 'btnDiv1': 
         values.length = 0; 
         inputs.textContent = values.join('');  
         break; 
       case 'btnDiv2': 
-        values.push('√');
-        inputs.textContent.join = values.join('');  
+        if (values.length === 0) {
+          values.push('√');
+          inputs.textContent  = values.join('');
+          } 
+        else {
+          break;
+        }
         break; 
       case 'btnDiv3': 
-        values.push('%'); 
-        inputs.textContent = values.join('');  
+        if (values.length === 0 || typeof getB(values) !== 'number' || typeof operate(values) !== 'number'  || values[values.last()] === '.')  {
+          break; 
+        } 
+        else if (typeof operate(values) === 'number' && getOperator(values) === '*') {
+          let a = getA(values); 
+          let b = getB(values); 
+          inputs.textContent = pcnt(a, b); 
+          values.length = 0; 
+        }
+        else { 
+          break;
+        }
         break; 
       case 'btnDiv4': 
-          if (getOperator(values) === undefined) {
+          if (values.length === 0 || values[values.last()] === '÷' || typeof getOperator(values) === 'string' || values[values.last()] === '.') { 
+            break; 
+          }
+          else if (getOperator(values) === undefined){
           values.push('÷');
           inputs.textContent = values.join('');  
           } 
@@ -339,7 +370,10 @@ function handleClick (event) {
         inputs.textContent = values.join('');  
         break; 
       case 'btnDiv8': 
-        if (getOperator(values) === undefined) {
+        if (values.length === 0 || values[values.last()] === '*' || typeof getOperator(values) === 'string' || values[values.last()] === '.')  { 
+          break; 
+        } 
+        else if (getOperator(values) === undefined) {
           values.push('*')
           inputs.textContent = values.join(''); 
         }
@@ -360,8 +394,11 @@ function handleClick (event) {
         values.push(6); 
         inputs.textContent = values.join(''); 
         break; 
-      case 'btnDiv12': 
-          if (getOperator(values) === undefined) {
+      case 'btnDiv12':
+          if (values.length === 0 || values[values.last()] === '-' || typeof getOperator(values) === 'string' || values[values.last()] === '.')  { 
+            break; 
+          }
+          else if (getOperator(values) === undefined) {
             values.push('-'); 
             inputs.textContent = values.join(''); 
           }
@@ -383,10 +420,9 @@ function handleClick (event) {
         inputs.textContent = values.join(''); 
         break; 
       case 'btnDiv16': 
-          if (values.length === 0) {
+          if (values.length === 0 || values[values.last()] === '+' || typeof getOperator(values) === 'string' || values[values.last()] === '.') {
             break; 
           }
-
           else if (getOperator(values) === undefined) {
             values.push('+')
             inputs.textContent = values.join('')
@@ -404,19 +440,45 @@ function handleClick (event) {
         values.push(0);
         inputs.textContent = values.join(''); 
         break; 
-    /*
-    case 'btnDiv19': 
-      values.push('.'); 
-      inputs.textContent = values.join(''); 
-      break;
-    */ 
+      case 'btnDiv19': 
+        let a = getA(values); 
+        let b = getB(values); 
+        console.log(a); 
+        console.log(b); 
+
+        if (values.length === 0) {
+          break; 
+          }
+        else if (typeof parseFloat(values[values.last()]) === 'number' && b % 1 === 0 && values[values.last()] !== '.') { 
+          values.push('.'); 
+          inputs.textConent = values.join(''); 
+        }
+        else if (typeof parseFloat(values[values.last()]) === 'number' && a % 1 === 0 && values[values.last()] !== '.') {
+          values.push('.'); 
+          inputs.textContent = values.join(''); 
+        }
+        else {
+          break; 
+        }
+        break;
       case 'btnDiv20':
-        if (getB(values) === undefined || getA(values) === NaN) {
+        if (typeof parseFloat(inputs.textContent) === 'number' && values.length === 0) { 
+          let input = parseFloat(inputs.textContent) 
+          values.push(input); 
+          inputs.textContent = values.join(''); 
+        }
+        else if (operate(values) === undefined|| isNaN(operate(values)) || values.length === 0) {
           break; 
         }
         else {
-          inputs.textContent = operate(values).toFixed(2); 
-          values.length = 0; 
+          if (getB(values) !== 0) {
+            inputs.textContent = operate(values).toFixed(2); 
+            values.length = 0; 
+          }
+          else {
+            inputs.textContent = operate(values); 
+            values.length = 0; 
+          }
           break;
         }
     }
@@ -425,7 +487,7 @@ function handleClick (event) {
 function getOperator(values) { 
   let op; 
   values.forEach(item => { 
-    if (isNaN(item)) {
+    if (item === '÷' || item === '*' || item === '-' || item === '+' || item === '√') {
       op = item; 
     }
   });
@@ -435,13 +497,20 @@ function getOperator(values) {
 
 
 function getA(values) { 
-    let lhs;
-    for (let i = 0; i < values.length; i++) {
-    if (typeof values[i] !== 'number') break;
-      lhs = values.slice(0, values[i]).join("");
-    }
-    let a = parseInt(lhs);
-    return a; 
+  let op = getOperator(values)
+  let opIndex = values.indexOf(op); 
+  let a; 
+  let lhs; 
+
+  if (op === undefined  & values.length > 0)  { 
+    lhs = values.join(""); 
+    a = parseFloat(lhs); 
+  } 
+  else { 
+    lhs = values.slice(0, opIndex).join("");
+    a = parseFloat(lhs);
+  } 
+  return a; 
   } 
 
 Array.prototype.last = function () {
@@ -453,10 +522,10 @@ function getB(values) {
   let index = values.last();
   let rhs; 
   for (let i = index; i > 0; i--) {
-    if (values[i] == op) break;
+    if (values[i] === op) break;
     rhs = values.slice(i, index +1).join("");
   }
-  let b = parseInt(rhs); 
+  let b = parseFloat(rhs); 
   return b; 
   }
 
