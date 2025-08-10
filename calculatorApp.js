@@ -29,12 +29,11 @@ function pcnt(a, b) {
 // operator function 
 
 function operate(values) { 
+  
   let a = getA(values);  
   let b = getB(values); 
   let operator = getOperator(values);
-  console.log(a); 
-  console.log(b); 
-  console.log(operator); 
+  
   switch (operator) { 
     case "+": 
       return sum(a, b);
@@ -435,22 +434,18 @@ function handleClick (event) {
           values.push(input); 
           inputs.textContent = values.join(''); 
         }
+        else if (operate(values) === "Don't be silly") { 
+          inputs.textContent = "Don't be silly";
+          values.length = 0; 
+        }
         else if (operate(values) === undefined|| isNaN(operate(values)) || values.length === 0) {
           break; 
         }
-        else if (getB(values) !== 0) {
-            inputs.textContent = operate(values).toFixed(2); 
-            values.length = 0; 
-        } 
-        else if (getB(values) === 0) { 
-            inputs.textContent = "Don't be silly"; 
-            values.pop(); 
-        }
-          else {
+        else {
             inputs.textContent = operate(values); 
-            values.length = 0; 
+            values.length = 0;
           }
-          break;
+        break;
         }
     }
 
