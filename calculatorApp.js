@@ -60,7 +60,6 @@ function operate(values) {
   }
 }
 
-let previousState; 
 
 const linkElement = document.createElement('link'); 
 linkElement.rel = 'stylesheet'; 
@@ -102,7 +101,8 @@ inputs.style.margin = '.5em';
 let inputValues = inputs.textContent
 let values = Array.from(inputValues);
 
-screen.appendChild(inputs)
+screen.appendChild(inputs) 
+
 
 let buttons = document.querySelector('.buttons'); 
 buttons.style.width = '520px'; 
@@ -132,179 +132,148 @@ for (let i=1; i <= 20; i++) {
     case 'btnDiv1': 
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
-      let aC = document.createElement('p');
-      aC.textContent = 'AC'; 
-      aC.style.display = 'flex'; 
-      aC.style.justifyContent = 'center'; 
-      aC.style.alignSelf = 'center'; 
-      aC.style.margin = '0'; 
-      btnDiv.appendChild(aC); 
+      btnDiv.textContent = 'AC'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv2': 
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
-      let sqrt = document.createElement('p'); 
-      sqrt.textContent = '√x'; 
-      sqrt.style.display = 'flex';
-      sqrt.style.justifyContent = 'center';; 
-      sqrt.style.alignSelf = 'center'
-      btnDiv.appendChild(sqrt); 
+      btnDiv.textContent = '√x'; 
+      btnDiv.style.display = 'flex';
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.justifyContent = 'center';; 
       break; 
     case 'btnDiv3': 
       btnDiv.style.background = '#8F7A7A';
       btnDiv.style.background = 'linear-gradient(0deg, rgba(143, 122, 122, 1) 0%, rgba(0, 0, 0, 1) 100%)';
-      let pcnt = document.createElement('p'); 
-      pcnt.textContent = '%'; 
-      pcnt.style.display = 'flex'; 
-      pcnt.style.justifyContent = 'center'; 
-      pcnt.style.alignSelf = 'center'; 
-      btnDiv.appendChild(pcnt); 
+      btnDiv.textContent = '%'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
     break;
     case 'btnDiv4': 
       btnDiv.style.background = '#20D7FF';
       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
-      let divide = document.createElement('p'); 
-      divide.textContent = '÷'; 
-      divide.style.display = 'flex'; 
-      divide.style.justifyContent = 'center'; 
-      divide.style.alignSelf = 'center'; 
-      btnDiv.appendChild(divide); 
+      btnDiv.textContent = '÷'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
     break; 
     case 'btnDiv8': 
       btnDiv.style.background = '#20D7FF';
       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
-      let multiply = document.createElement('p'); 
-      multiply.textContent = '×'; 
-      multiply.style.display = 'flex'; 
-      multiply.style.justifyContent = 'center'; 
-      multiply.style.alignSelf = 'center'; 
-      btnDiv.appendChild(multiply); 
+      btnDiv.textContent = '×'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
     break; 
     case 'btnDiv12': 
       btnDiv.style.background = '#20D7FF';
       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)';
-      let sbtr = document.createElement('p'); 
-      sbtr.textContent = '−'; 
-      sbtr.style.display = 'flex'; 
-      sbtr.style.justifyContent = 'center'; 
-      sbtr.style.alignSelf = 'center'; 
-      btnDiv.appendChild(sbtr); 
+      btnDiv.textContent = '−';  
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
     break; 
     case 'btnDiv16': 
       btnDiv.style.background = '#20D7FF';
       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
-      let add = document.createElement('p'); 
-      add.textContent = '+'; 
-      add.style.display = 'flex'; 
-      add.style.justifyContent = 'center';
-      add.style.alignSelf = 'center'; 
-      btnDiv.appendChild(add); 
+      btnDiv.textContent = '+'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center';
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv20': 
       btnDiv.style.background = '#20D7FF';
       btnDiv.style.background = 'linear-gradient(0deg,rgba(32, 215, 255, 1) 0%, rgba(66, 220, 38, 1) 100%)'; 
-      let eql = document.createElement('p'); 
-      eql.textContent = '=';
-      eql.style.display = 'flex'; 
-      eql.style.justifyContent = 'center'; 
-      eql.style.alignSelf = 'center'; 
-      btnDiv.appendChild(eql); 
+      btnDiv.textContent = '=';
+      btnDiv.style.alignItems = 'center' 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
     break; 
     case 'btnDiv5': 
-      let svn = document.createElement('p');
-      svn.textContent = '7'; 
-      svn.style.display = 'flex'; 
-      svn.style.justifyContent = 'center'; 
-      svn.style.alignSelf = 'center'; 
-      btnDiv.appendChild(svn); 
+      btnDiv.textContent = '7'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break;
     case 'btnDiv6': 
-      let eight = document.createElement('p'); 
-      eight.textContent = '8'; 
-      eight.style.display = 'flex'; 
-      eight.style.justifyContent = 'center'; 
-      eight.style.alignSelf = 'center'; 
-      btnDiv.appendChild(eight); 
+      btnDiv.textContent = '8'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv7': 
-      let nine = document.createElement('p'); 
-      nine.textContent = '9'; 
-      nine.style.display = 'flex'; 
-      nine.style.justifyContent = 'center'; 
-      nine.style.alignSelf = 'center'; 
-      btnDiv.appendChild(nine); 
+      btnDiv.textContent = '9'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv9': 
-      let four = document.createElement('p'); 
-      four.textContent = '4'; 
-      four.style.disply = 'flex'; 
-      four.style.justifyContent = 'center'; 
-      four.style.alignSelf = 'center'; 
-      btnDiv.appendChild(four); 
+      btnDiv.textContent = '4'; 
+      btnDiv.style.disply = 'flex'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv10': 
-      let five = document.createElement('p'); 
-      five.textContent = '5'; 
-      five.style.display = 'flex'; 
-      five.style.justifyContent = 'center'; 
-      five.style.alignSelf = 'center'; 
-      btnDiv.appendChild(five) 
+      btnDiv.textContent = '5'; 
+      btnDiv.style.alignItems = 'center';
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv11': 
-      let six = document.createElement('p'); 
-      six.textContent = '6'; 
-      six.style.display = 'flex'; 
-      six.style.justifyContent = 'center'; 
-      six.style.alignSelf = 'center'; 
-      btnDiv.appendChild(six); 
+      btnDiv.textContent = '6'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv13': 
-      let one = document.createElement('p'); 
-      one.textContent = '1'; 
-      one.style.display = 'flex'; 
-      one.style.justifyContent = 'center'; 
-      one.style.alignSelf = 'center'; 
-      btnDiv.appendChild(one); 
+      btnDiv.textContent = '1'; 
+      btnDiv.style.alignItems = 'center';
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv14': 
-      let two = document.createElement('p'); 
-      two.textContent = '2'; 
-      two.style.display = 'flex'; 
-      two.style.justifyContent = 'center'; 
-      two.style.alignSelf = 'center'; 
-      btnDiv.appendChild(two); 
+      btnDiv.textContent = '2'; 
+      btnDiv.style.alignItems = 'center' 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv15': 
-      let three = document.createElement('p'); 
-      three.textContent = '3'; 
-      three.style.display = 'flex'; 
-      three.style.justifyContent = 'center'; 
-      three.style.alignSelf = 'center'; 
-      btnDiv.appendChild(three); 
+      btnDiv.textContent = '3'; 
+      btnDiv.style.alignItems = 'center';  
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
      case 'btnDiv18': 
-      let zero = document.createElement('p'); 
-      zero.textContent = '0'; 
-      zero.style.display = 'flex'; 
-      zero.style.justifyContent = 'center'; 
-      zero.style.alignSelf = 'center'; 
-      btnDiv.appendChild(zero); 
+      btnDiv.textContent = '0'; 
+      btnDiv.style.alignItems = 'center';  
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv19': 
-      let decimal = document.createElement('p'); 
-      decimal.textContent = '.'; 
-      decimal.style.display = 'flex'; 
-      decimal.style.justifyContent = 'center'; 
-      decimal.style.alignSelf = 'center'; 
-      btnDiv.appendChild(decimal); 
+      btnDiv.textContent = '.'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
     case 'btnDiv17': 
-      let backspace = document.createElement('p'); 
-      backspace.textContent = '⬅︎'; 
-      backspace.style.display = 'flex'; 
-      backspace.style.justifyContent = 'center'; 
-      backspace.style.alignSelf = 'center'; 
-      btnDiv.appendChild(backspace); 
+      btnDiv.textContent = '⬅︎'; 
+      btnDiv.style.alignItems = 'center'; 
+      btnDiv.style.display = 'flex'; 
+      btnDiv.style.justifyContent = 'center'; 
+      btnDiv.style.alignItems = 'center'; 
     break; 
   }
 
@@ -443,20 +412,19 @@ function handleClick (event) {
       case 'btnDiv19': 
         let a = getA(values); 
         let b = getB(values); 
-        console.log(a); 
-        console.log(b); 
 
         if (values.length === 0) {
           break; 
           }
-        else if (typeof parseFloat(values[values.last()]) === 'number' && b % 1 === 0 && values[values.last()] !== '.') { 
-          values.push('.'); 
-          inputs.textConent = values.join(''); 
-        }
         else if (typeof parseFloat(values[values.last()]) === 'number' && a % 1 === 0 && values[values.last()] !== '.') {
           values.push('.'); 
           inputs.textContent = values.join(''); 
+        }       
+        else if (typeof parseFloat(values[values.last()]) === 'number' && b % 1 === 0 && values[values.last()] !== '.') { 
+          values.push('.'); 
+          inputs.textContent = values.join(''); 
         }
+   
         else {
           break; 
         }
@@ -470,11 +438,14 @@ function handleClick (event) {
         else if (operate(values) === undefined|| isNaN(operate(values)) || values.length === 0) {
           break; 
         }
-        else {
-          if (getB(values) !== 0) {
+        else if (getB(values) !== 0) {
             inputs.textContent = operate(values).toFixed(2); 
             values.length = 0; 
-          }
+        } 
+        else if (getB(values) === 0) { 
+            inputs.textContent = "Don't be silly"; 
+            values.pop(); 
+        }
           else {
             inputs.textContent = operate(values); 
             values.length = 0; 
@@ -482,7 +453,6 @@ function handleClick (event) {
           break;
         }
     }
-}
 
 function getOperator(values) { 
   let op; 

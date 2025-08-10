@@ -38,10 +38,12 @@ p {
   background: linear-gradient(0deg, rgba(117, 117, 117, 1) 0%, rgba(253, 253, 253, 1) 100%);
   font-size: 2em;
   width: 3em; 
-  height: 3em;  
+  height: 3em; 
+  text-align: center;
 }
 
 .buttons {
   border-radius: 1em;  
   margin-top: 0px; 
+  text-align: center; 
 }
