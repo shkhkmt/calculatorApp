@@ -25,12 +25,13 @@ p {
 
 .calculator { 
   background-color: #545454; 
-  border-radius: 70px; 
+  border-radius: 1em; 
 } 
 
 .screen { background-color: #000000; 
-  border-radius: 70px; 
-  margin-bottom: 0px; 
+  border-radius: 0.5em; 
+  margin-bottom: 0px;
+  height: 2em;  
 } 
 
 .btn { 
@@ -43,7 +44,7 @@ p {
 }
 
 .buttons {
-  border-radius: 1em;  
+  border-radius: .5em;  
   margin-top: 0px; 
   text-align: center; 
 }

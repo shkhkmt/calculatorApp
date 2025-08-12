@@ -73,29 +73,26 @@ content.style.width = '-webkit-fill-available-';
 content.style.flexDirection = 'column'; 
 
 let calculator = document.querySelector('.calculator'); 
-calculator.style.width = '600px'; 
-calculator.style.height = '900px'; 
 calculator.style.display = 'flex'; 
 calculator.style.flexDirection = 'column'; 
 calculator.style.justifyContent = 'center'; 
-calculator.style.margin = '2.5em'; 
+calculator.style.margin = '2em auto'; 
 
 
 let screen = document.querySelector('.screen'); 
-screen.style.width = '520px'; 
-screen.style.height = '150px'; 
+screen.style.height = '6em'; 
 screen.style.display = 'flex'; 
 screen.style.alignSelf = 'stretch'; 
-screen.style.alignItems = 'center'; 
+screen.style.alignItems = 'end'; 
 screen.style.justifyContent = 'flex-end'; 
-screen.style.margin = '2em auto'; 
+screen.style.margin = '1em'; 
 screen.style.border = '2px solid black'; 
 
 let inputs = document.createElement('p'); 
 inputs.textContent = ''; 
-inputs.style.fontSize = '3em'; 
+inputs.style.fontSize = '4em'; 
 inputs.style.display = 'flex'; 
-inputs.style.margin = '.5em';  
+inputs.style.width = 'auto';
 
 let inputValues = inputs.textContent
 let values = Array.from(inputValues);
@@ -104,17 +101,18 @@ screen.appendChild(inputs)
 
 
 let buttons = document.querySelector('.buttons'); 
-buttons.style.width = '520px'; 
-buttons.style.height = '590px'; 
 buttons.style.display = 'grid'; 
 buttons.style.alignSelf = 'stretch'; 
 buttons.style.flex = '1 1 auto'; 
 buttons.style.gridTemplateColumns = 'auto auto auto auto'; 
-buttons.style.margin = '0 2.5em 2.5em 2.5em'; 
+buttons.style.margin = 'auto';
 
 let footer = document.createElement('footer'); 
 footer.id = 'footer'; 
-footer.textContent = 'Copyright © 2025 shkhkmt'; 
+footer.textContent = '© 2025 shkhkmt'; 
+footer.style.position = 'fixed' 
+footer.style.bottom = '0'; 
+footer.style.width = '100%'; 
 content.appendChild(footer); 
 
 for (let i=1; i <= 20; i++) {
@@ -122,7 +120,7 @@ for (let i=1; i <= 20; i++) {
   btnDiv.id = `btnDiv${i}`;
   btnDiv.className = "btn"; 
   btnDiv.style.display = 'flex'; 
-  btnDiv.style.borderRadius = '10em'; 
+  btnDiv.style.borderRadius = '.5em'; 
   btnDiv.style.margin = '.5em'; 
   btnDiv.style.justifyContent = 'center'; 
   btnDiv.style.fontSize = '2em'; 
