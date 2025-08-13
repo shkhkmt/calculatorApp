@@ -440,7 +440,7 @@ function handleClick (event) {
           break; 
         }
         else {
-            inputs.textContent = operate(values); 
+            inputs.textContent = operate(values).toFixed(3); 
             values.length = 0;
           }
         break;
