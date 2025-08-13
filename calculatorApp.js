@@ -319,7 +319,7 @@ function handleClick (event) {
           inputs.textContent = values.join('');  
           } 
           else {
-            inputs.textContent = operate(values).toFixed(2); 
+            inputs.textContent = operate(values).toFixed(3); 
             values.length = 0; 
           }
         break; 
@@ -344,7 +344,7 @@ function handleClick (event) {
           inputs.textContent = values.join(''); 
         }
         else {
-          inputs.textContent = operate(values).toFixed(2); 
+          inputs.textContent = operate(values).toFixed(3); 
           values.length = 0; 
         }
         break; 
@@ -394,7 +394,7 @@ function handleClick (event) {
             inputs.textContent = values.join('')
           }
           else {
-            inputs.textContent = operate(values).toFixed(2); 
+            inputs.textContent = operate(values).toFixed(3); 
             values.length = 0; 
           }
          break; 
@@ -439,10 +439,14 @@ function handleClick (event) {
         else if (operate(values) === undefined|| isNaN(operate(values)) || values.length === 0) {
           break; 
         }
+        else if (operate(values) % 1 === 0) {
+          inputs.textContent = operate(values); 
+          values.length = 0; 
+        }
         else {
-            inputs.textContent = operate(values).toFixed(3); 
-            values.length = 0;
-          }
+          inputs.textContent = operate(values).toFixed(3); 
+          values.length = 0; 
+        }
         break;
         }
     }
