@@ -311,8 +311,13 @@ function handleClick (event) {
         }
         break; 
       case 'btnDiv4': 
-          if (values.length === 0 || values[values.last()] === '÷' || typeof getOperator(values) === 'string' || values[values.last()] === '.') { 
+          if (values.length === 0 || values[values.last()] === '÷' || values[values.last()] === '.') { 
             break; 
+          }
+          else if (typeof getOperator(values) === 'string') {
+            values.pop(); 
+            values.push ('÷');
+            inputs.textContent = values.join(''); 
           }
           else if (getOperator(values) === undefined){
           values.push('÷');
@@ -336,11 +341,16 @@ function handleClick (event) {
         inputs.textContent = values.join('');  
         break; 
       case 'btnDiv8': 
-        if (values.length === 0 || values[values.last()] === '*' || typeof getOperator(values) === 'string' || values[values.last()] === '.')  { 
+        if (values.length === 0 || values[values.last()] === '*' || values[values.last()] === '.')  { 
           break; 
         } 
+        else if (typeof getOperator(values) === 'string') { 
+          values.pop(); 
+          values.push('*');
+          inputs.textContent = values.join(''); 
+        } 
         else if (getOperator(values) === undefined) {
-          values.push('*')
+          values.push('*');
           inputs.textContent = values.join(''); 
         }
         else {
@@ -361,17 +371,22 @@ function handleClick (event) {
         inputs.textContent = values.join(''); 
         break; 
       case 'btnDiv12':
-          if (values.length === 0 || values[values.last()] === '-' || typeof getOperator(values) === 'string' || values[values.last()] === '.')  { 
+          if (values.length === 0 || values[values.last()] === '-' || values[values.last()] === '.')  { 
             break; 
           }
-          else if (getOperator(values) === undefined) {
+        else if (typeof getOperator(values) === 'string') {
+          values.pop(); 
+          values.push('-'); 
+          inputs.textContent = values.join(''); 
+        }
+        else if (getOperator(values) === undefined) {
             values.push('-'); 
             inputs.textContent = values.join(''); 
-          }
-          else {
+        }
+        else {
             inputs.textContent = operate(values); 
             values.length = 0; 
-          } 
+        } 
         break; 
       case 'btnDiv13': 
         values.push(1); 
@@ -386,18 +401,23 @@ function handleClick (event) {
         inputs.textContent = values.join(''); 
         break; 
       case 'btnDiv16': 
-          if (values.length === 0 || values[values.last()] === '+' || typeof getOperator(values) === 'string' || values[values.last()] === '.') {
+        if (values.length === 0 || values[values.last()] === '+' || values[values.last()] === '.') {
             break; 
-          }
-          else if (getOperator(values) === undefined) {
-            values.push('+')
-            inputs.textContent = values.join('')
-          }
-          else {
-            inputs.textContent = operate(values).toFixed(3); 
-            values.length = 0; 
-          }
-         break; 
+        }
+        else if (typeof getOperator(values) === 'string') { 
+          values.pop(); 
+          values.push('+'); 
+          inputs.textContent = values.join(''); 
+        } 
+        else if (getOperator(values) === undefined) {
+          values.push('+')
+          inputs.textContent = values.join('')
+        }
+        else {
+          inputs.textContent = operate(values).toFixed(3); 
+          values.length = 0; 
+        }
+        break; 
       case 'btnDiv17': 
         values.pop(); 
         inputs.textContent = values.join(''); 
