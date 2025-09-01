@@ -1,3 +1,8 @@
+* { 
+  * margin: 0; 
+  * padding: 0; 
+} 
+
 body, 
 html{
   display: flex; 
@@ -19,32 +24,33 @@ p {
 #content { 
   display: flex; 
   justify-content: center; 
-  padding: 2em;
+  padding: 2rem;
   align-items: center; 
 } 
 
 .calculator { 
   background-color: #545454; 
-  border-radius: 1em; 
+  border-radius: 1rem; 
+  width: auto; 
 } 
 
 .screen { background-color: #000000; 
   border-radius: 0.5em; 
   margin-bottom: 0px;
-  height: 2em;  
+  height: .5rem;  
 } 
 
 .btn { 
   background: #757575;
   background: linear-gradient(0deg, rgba(117, 117, 117, 1) 0%, rgba(253, 253, 253, 1) 100%);
-  font-size: 2em;
-  width: 3em; 
-  height: 3em; 
+  font-size: 1rem;
+  width: 3rem; 
+  height: 3rem; 
   text-align: center;
 }
 
 .buttons {
-  border-radius: .5em;  
+  border-radius: .5rem;  
   margin-top: 0px; 
   text-align: center; 
 }

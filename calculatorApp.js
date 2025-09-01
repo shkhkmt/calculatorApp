@@ -76,21 +76,21 @@ let calculator = document.querySelector('.calculator');
 calculator.style.display = 'flex'; 
 calculator.style.flexDirection = 'column'; 
 calculator.style.justifyContent = 'center'; 
-calculator.style.margin = '2em auto'; 
+calculator.style.margin = '2rem auto'; 
 
 
 let screen = document.querySelector('.screen'); 
-screen.style.height = '6em'; 
+screen.style.height = '4rem'; 
 screen.style.display = 'flex'; 
 screen.style.alignSelf = 'stretch'; 
 screen.style.alignItems = 'end'; 
 screen.style.justifyContent = 'flex-end'; 
-screen.style.margin = '1em'; 
+screen.style.margin = '.5rem'; 
 screen.style.border = '2px solid black'; 
 
 let inputs = document.createElement('p'); 
 inputs.textContent = ''; 
-inputs.style.fontSize = '4em'; 
+inputs.style.fontSize = '4rem'; 
 inputs.style.display = 'flex'; 
 inputs.style.width = 'auto';
 
@@ -120,10 +120,10 @@ for (let i=1; i <= 20; i++) {
   btnDiv.id = `btnDiv${i}`;
   btnDiv.className = "btn"; 
   btnDiv.style.display = 'flex'; 
-  btnDiv.style.borderRadius = '.5em'; 
-  btnDiv.style.margin = '.5em'; 
+  btnDiv.style.borderRadius = '.5rem'; 
+  btnDiv.style.margin = '.5rem'; 
   btnDiv.style.justifyContent = 'center'; 
-  btnDiv.style.fontSize = '2em'; 
+  btnDiv.style.fontSize = '1.5rem'; 
   
   switch (btnDiv.id) {
     case 'btnDiv1': 
