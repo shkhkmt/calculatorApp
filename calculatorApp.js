@@ -69,7 +69,7 @@ let body = document.querySelector('body');
 
 let content = document.querySelector('#content'); 
 content.style.alignItems = 'anchor-center'; 
-content.style.width = '-webkit-fill-available-'; 
+content.style.width = '90vw'
 content.style.flexDirection = 'column'; 
 
 let calculator = document.querySelector('.calculator'); 
@@ -86,13 +86,13 @@ screen.style.alignSelf = 'stretch';
 screen.style.alignItems = 'end'; 
 screen.style.justifyContent = 'flex-end'; 
 screen.style.margin = '.5rem'; 
-screen.style.border = '2px solid black'; 
 
 let inputs = document.createElement('p'); 
 inputs.textContent = ''; 
-inputs.style.fontSize = '4rem'; 
+inputs.style.fontSize = '2rem'; 
 inputs.style.display = 'flex'; 
 inputs.style.width = 'auto';
+inputs.style.overflow = 'hidden'; 
 
 let inputValues = inputs.textContent
 let values = Array.from(inputValues);
@@ -280,7 +280,12 @@ for (let i=1; i <= 20; i++) {
 
 
 function handleClick (event) { 
-
+  /*
+  if (values.length >= 12) {
+    return;
+  }
+  else {
+  */ 
   let target = event.target; 
     switch (target.id) {
       case 'btnDiv1': 
@@ -314,7 +319,7 @@ function handleClick (event) {
           if (values.length === 0 || values[values.last()] === '÷' || values[values.last()] === '.') { 
             break; 
           }
-          else if (typeof getOperator(values) === 'string') {
+          else if (typeof values[values.last()] === 'string') {
             values.pop(); 
             values.push ('÷');
             inputs.textContent = values.join(''); 
@@ -323,8 +328,15 @@ function handleClick (event) {
           values.push('÷');
           inputs.textContent = values.join('');  
           } 
+          else if (typeof operate(values) === 'number'){ 
+            let input = operate(values).toFixed(2);
+            values.length = 0; 
+            values.push(input);
+            values.push('÷'); 
+            inputs.textContent = input;  
+          }
           else {
-            inputs.textContent = operate(values).toFixed(3); 
+            inputs.textContent = operate(values).toFixed(2); 
             values.length = 0; 
           }
         break; 
@@ -344,7 +356,7 @@ function handleClick (event) {
         if (values.length === 0 || values[values.last()] === '*' || values[values.last()] === '.')  { 
           break; 
         } 
-        else if (typeof getOperator(values) === 'string') { 
+        else if (typeof values[values.last()] === 'string') { 
           values.pop(); 
           values.push('*');
           inputs.textContent = values.join(''); 
@@ -353,8 +365,20 @@ function handleClick (event) {
           values.push('*');
           inputs.textContent = values.join(''); 
         }
+        else if (typeof operate(values) === 'number') { 
+          let input = operate(values); 
+          values.length = 0; 
+          values.push(input); 
+          values.push('*');
+          if (Number.isInteger(inputs) === 'true') { 
+            inputs.textContent = input; 
+          }
+          else if (Number.isInteger(inputs) === 'false') {
+            inputs.textContent = input.toFixed(2)
+          }
+        }
         else {
-          inputs.textContent = operate(values).toFixed(3); 
+          inputs.textContent = operate(values).toFixed(2); 
           values.length = 0; 
         }
         break; 
@@ -374,7 +398,7 @@ function handleClick (event) {
           if (values.length === 0 || values[values.last()] === '-' || values[values.last()] === '.')  { 
             break; 
           }
-        else if (typeof getOperator(values) === 'string') {
+        else if (typeof values[values.last()] === 'string') {
           values.pop(); 
           values.push('-'); 
           inputs.textContent = values.join(''); 
@@ -382,6 +406,13 @@ function handleClick (event) {
         else if (getOperator(values) === undefined) {
             values.push('-'); 
             inputs.textContent = values.join(''); 
+        }
+        else if (typeof operate(values) === 'number') { 
+          let input = operate(values); 
+          values.length = 0; 
+          values.push(input); 
+          values.push('-'); 
+          inputs.textContent = input; 
         }
         else {
             inputs.textContent = operate(values); 
@@ -404,7 +435,7 @@ function handleClick (event) {
         if (values.length === 0 || values[values.last()] === '+' || values[values.last()] === '.') {
             break; 
         }
-        else if (typeof getOperator(values) === 'string') { 
+        else if (typeof values[values.last()] === 'string') { 
           values.pop(); 
           values.push('+'); 
           inputs.textContent = values.join(''); 
@@ -412,9 +443,16 @@ function handleClick (event) {
         else if (getOperator(values) === undefined) {
           values.push('+')
           inputs.textContent = values.join('')
-        }
+        } 
+        else if (typeof operate(values) === 'number') {
+          let input = operate(values).toFixed(2); 
+          values.length = 0; 
+          values.push(input); 
+          values.push('+'); 
+          inputs.textContent = input; 
+        } 
         else {
-          inputs.textContent = operate(values).toFixed(3); 
+          inputs.textContent = operate(values).toFixed(2); 
           values.length = 0; 
         }
         break; 
@@ -446,8 +484,11 @@ function handleClick (event) {
           break; 
         }
         break;
-      case 'btnDiv20':
-        if (typeof parseFloat(inputs.textContent) === 'number' && values.length === 0) { 
+      case 'btnDiv20': 
+        if (values.length === 0) { 
+          break; 
+        } 
+        else if (typeof parseFloat(inputs.textContent) === 'number' && values.length === 0) { 
           let input = parseFloat(inputs.textContent) 
           values.push(input); 
           inputs.textContent = values.join(''); 
@@ -456,20 +497,26 @@ function handleClick (event) {
           inputs.textContent = "Don't be silly";
           values.length = 0; 
         }
-        else if (operate(values) === undefined|| isNaN(operate(values)) || values.length === 0) {
+        else if (isNaN(operate(values)) || values.length === 0) {
           break; 
         }
         else if (operate(values) % 1 === 0) {
           inputs.textContent = operate(values); 
           values.length = 0; 
         }
+        else if (operate(values) === 'undefined') {
+          break; 
+        } 
         else {
-          inputs.textContent = operate(values).toFixed(3); 
+          inputs.textContent = operate(values).toFixed(2); 
           values.length = 0; 
         }
         break;
         }
-    }
+  }
+/*
+}
+*/ 
 
 function getOperator(values) { 
   let op; 
